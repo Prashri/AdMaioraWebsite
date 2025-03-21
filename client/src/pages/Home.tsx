@@ -1,11 +1,12 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, FileText, Handshake, Star, Quote, ChevronRight, ArrowRight, CheckCircle } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Search, FileText, Handshake, Star, Quote, ChevronRight, ArrowRight, CheckCircle, ArrowUpRight } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [isInView, setIsInView] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   // Monitor scroll position to trigger animations
   useEffect(() => {
@@ -27,67 +28,88 @@ export default function Home() {
     };
   }, []);
 
+  // Parallax effect for hero section
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroRef.current) return;
+      
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      
+      const elements = heroRef.current.querySelectorAll('.parallax-element');
+      elements.forEach((el) => {
+        const element = el as HTMLElement;
+        const speed = parseFloat(element.getAttribute('data-speed') || '0.1');
+        element.style.transform = `translate(${x * 50 * speed}px, ${y * 50 * speed}px)`;
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <>
       {/* Hero Section with Parallax */}
-      <section className="min-h-screen pt-32 pb-24 relative overflow-hidden flex items-center">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/90 to-navy/80 z-10"></div>
+      <section className="min-h-screen pt-32 pb-24 relative overflow-hidden flex items-center bg-[#1A1A1A]" ref={heroRef}>
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-grid z-0"></div>
         
-        {/* Video/Image Background with Parallax */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center bg-no-repeat parallax z-0">
-          {/* Placeholder for video - would be replaced with actual video in production */}
-        </div>
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 -left-20 w-[300px] h-[300px] rounded-full bg-[#39FF14]/10 filter blur-[100px] animate-pulse parallax-element" data-speed="0.05"></div>
+        <div className="absolute bottom-1/4 -right-20 w-[350px] h-[350px] rounded-full bg-[#39FF14]/5 filter blur-[120px] animate-pulse parallax-element" data-speed="0.08" style={{animationDelay: '1s'}}></div>
         
         <div className="container mx-auto px-4 relative z-20">
-          <div className="flex flex-col max-w-5xl mx-auto text-center">
+          <div className="flex flex-col max-w-5xl mx-auto">
             <div className="fade-in">
-              <span className="inline-block px-4 py-1 bg-gold/10 text-gold border border-gold/20 rounded-full text-sm font-playfair tracking-wider mb-6">
+              <span className="inline-block px-4 py-1 bg-[#39FF14]/5 text-[#39FF14] border border-[#39FF14]/30 rounded-md text-sm font-poppins tracking-wider mb-6 animate-glow">
                 PREMIUM PROCUREMENT CONSULTING
               </span>
               
-              <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-white tracking-wide">
-                Is Your Procurement <span className="relative inline-block text-gold">
+              <h1 className="font-poppins text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-white tracking-wider">
+                Is Your Procurement <span className="relative inline-block text-[#39FF14] neon-glow">
                   Chaos
-                  <span className="absolute bottom-0 left-0 w-full h-1 bg-gold/30"></span>
+                  <span className="absolute bottom-1 left-0 w-full h-[2px] bg-[#39FF14]/30"></span>
                 </span> <br className="hidden md:block" />Stalling Your Dreams?
               </h1>
               
-              <p className="text-xl mb-10 text-white/90 font-lora max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl mb-10 text-white/90 font-inter max-w-2xl leading-relaxed">
                 Every delay, every hidden cost, every unreliable supplier—eating away at your growth. Isn't it time your business broke free from the procurement chaos?
               </p>
               
-              <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+              <div className="flex flex-col sm:flex-row justify-start space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
                 <Link href="/contact">
-                  <div className="btn-gold px-10 py-4 text-lg font-medium font-playfair tracking-wide shimmer">
+                  <button className="btn-neon text-lg font-medium shadow-neon">
                     Contact Us for Pricing
-                  </div>
+                  </button>
                 </Link>
                 <Link href="/services">
-                  <div className="border border-gold/40 text-gold hover:bg-gold/10 font-medium py-4 px-10 rounded-md transition-all duration-300 text-lg font-playfair tracking-wide flex items-center justify-center">
+                  <button className="btn-outline-neon text-lg font-medium flex items-center">
                     Learn How It Works
-                    <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
+                    <ArrowUpRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
                 </Link>
               </div>
               
-              <div className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-10 mt-4 opacity-90">
+              <div className="flex flex-col md:flex-row items-start justify-start space-y-6 md:space-y-0 md:space-x-10 mt-4 opacity-90">
                 <div className="flex items-center">
-                  <div className="h-14 w-14 bg-gold/10 rounded-full flex items-center justify-center mr-4">
-                    <CheckCircle size={24} className="text-gold" />
+                  <div className="feature-icon-sm">
+                    <CheckCircle size={24} className="text-[#39FF14]" />
                   </div>
                   <div className="text-left">
-                    <p className="text-gold font-playfair font-bold">Premium Quality</p>
+                    <p className="text-white font-poppins font-bold">Premium Quality</p>
                     <p className="text-white/70 text-sm">Thoroughly vetted suppliers</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="h-14 w-14 bg-gold/10 rounded-full flex items-center justify-center mr-4">
-                    <CheckCircle size={24} className="text-gold" />
+                  <div className="feature-icon-sm">
+                    <CheckCircle size={24} className="text-[#39FF14]" />
                   </div>
                   <div className="text-left">
-                    <p className="text-gold font-playfair font-bold">Trusted by 200+ SMEs</p>
+                    <p className="text-white font-poppins font-bold">Trusted by 200+ SMEs</p>
                     <p className="text-white/70 text-sm">Across multiple industries</p>
                   </div>
                 </div>
@@ -97,47 +119,49 @@ export default function Home() {
         </div>
         
         {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent z-10"></div>
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#39FF14]/10 z-10"></div>
       </section>
 
       {/* Services Overview */}
-      <section id="services-section" className="py-section bg-white relative">
+      <section id="services-section" className="py-section bg-[#121212] relative">
+        <div className="absolute inset-0 bg-grid z-0"></div>
+        <div className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full bg-[#39FF14]/5 filter blur-[150px] animate-pulse"></div>
+        
         <div className="container mx-auto px-4 relative z-10">
-          {/* Gold accent line */}
-          <div className="w-24 h-1 bg-gold mx-auto mb-10"></div>
+          {/* Green accent line */}
+          <div className="divider-neon-center"></div>
           
           <div className="text-center mb-20">
-            <p className="text-gold font-medium font-playfair tracking-wider mb-4">OUR PREMIUM SERVICES</p>
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-navy">What We Offer</h2>
-            <p className="text-navy/70 max-w-2xl mx-auto font-lora">
+            <p className="text-[#39FF14] font-medium font-poppins tracking-wider mb-4">OUR PREMIUM SERVICES</p>
+            <h2 className="text-4xl md:text-5xl font-poppins font-bold mb-6 text-white">What We Offer</h2>
+            <p className="text-white/70 max-w-2xl mx-auto font-inter">
               Ad Maiora provides exclusive procurement consulting services designed to elevate Indian SMEs with unmatched supplier connections and strategic insights.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Service Card 1 */}
             <div className={`transform transition-all duration-1000 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`} style={{ transitionDelay: '0.1s' }}>
               <div className="group">
-                <Card className="luxury-card h-full border-gold/20 rounded-none">
-                  <div className="relative h-56 bg-navy flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')] opacity-30 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"></div>
-                    <div className="absolute inset-0 bg-navy/70"></div>
-                    <div className="relative z-10 transition-transform duration-500 transform group-hover:scale-110">
-                      <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mb-2 mx-auto">
-                        <Search size={36} className="text-gold" />
+                <Card className="modern-card h-full border-[#333333] hover:border-[#39FF14]/30 overflow-visible">
+                  <div className="relative h-56 bg-[#2A2A2A] flex items-center justify-center overflow-hidden rounded-t-lg">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')] opacity-20 bg-center bg-cover transition-transform duration-700 group-hover:scale-110 rounded-t-lg"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#2A2A2A]/50 to-[#2A2A2A] rounded-t-lg"></div>
+                    <div className="relative z-10 transition-all duration-500 transform group-hover:scale-110 group-hover:-translate-y-2">
+                      <div className="w-24 h-24 feature-icon">
+                        <Search size={42} className="text-[#39FF14]" />
                       </div>
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                   </div>
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-playfair font-bold mb-4 text-navy group-hover:text-gold transition-colors duration-300">Find Elite Suppliers</h3>
-                    <p className="text-navy/70 font-lora leading-relaxed mb-6">
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4 text-white group-hover:text-[#39FF14] transition-colors duration-300">Find Elite Suppliers</h3>
+                    <p className="text-white/70 font-inter leading-relaxed mb-6">
                       Connect with our exclusive network of trusted vendors perfectly tailored to your unique business needs and quality standards.
                     </p>
                     <Link href="/services">
-                      <span className="text-navy font-medium font-playfair group-hover:text-gold inline-flex items-center transition-colors duration-300 cursor-pointer gold-underline">
+                      <span className="neon-underline text-white font-medium font-poppins group-hover:text-[#39FF14] inline-flex items-center transition-colors duration-300 cursor-pointer">
                         Discover More 
-                        <ChevronRight size={18} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                        <ArrowUpRight size={18} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     </Link>
                   </CardContent>
@@ -148,26 +172,25 @@ export default function Home() {
             {/* Service Card 2 */}
             <div className={`transform transition-all duration-1000 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`} style={{ transitionDelay: '0.3s' }}>
               <div className="group">
-                <Card className="luxury-card h-full border-gold/20 rounded-none">
-                  <div className="relative h-56 bg-navy flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')] opacity-30 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"></div>
-                    <div className="absolute inset-0 bg-navy/70"></div>
-                    <div className="relative z-10 transition-transform duration-500 transform group-hover:scale-110">
-                      <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mb-2 mx-auto">
-                        <FileText size={36} className="text-gold" />
+                <Card className="modern-card h-full border-[#333333] hover:border-[#39FF14]/30 overflow-visible">
+                  <div className="relative h-56 bg-[#2A2A2A] flex items-center justify-center overflow-hidden rounded-t-lg">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')] opacity-20 bg-center bg-cover transition-transform duration-700 group-hover:scale-110 rounded-t-lg"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#2A2A2A]/50 to-[#2A2A2A] rounded-t-lg"></div>
+                    <div className="relative z-10 transition-all duration-500 transform group-hover:scale-110 group-hover:-translate-y-2">
+                      <div className="w-24 h-24 feature-icon">
+                        <FileText size={42} className="text-[#39FF14]" />
                       </div>
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                   </div>
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-playfair font-bold mb-4 text-navy group-hover:text-gold transition-colors duration-300">Premium Insights</h3>
-                    <p className="text-navy/70 font-lora leading-relaxed mb-6">
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4 text-white group-hover:text-[#39FF14] transition-colors duration-300">Premium Insights</h3>
+                    <p className="text-white/70 font-inter leading-relaxed mb-6">
                       Receive meticulously crafted supplier reports with exclusive industry insights and strategic recommendations for optimal decision-making.
                     </p>
                     <Link href="/services">
-                      <span className="text-navy font-medium font-playfair group-hover:text-gold inline-flex items-center transition-colors duration-300 cursor-pointer gold-underline">
+                      <span className="neon-underline text-white font-medium font-poppins group-hover:text-[#39FF14] inline-flex items-center transition-colors duration-300 cursor-pointer">
                         Explore Reports 
-                        <ChevronRight size={18} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                        <ArrowUpRight size={18} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     </Link>
                   </CardContent>
@@ -178,26 +201,25 @@ export default function Home() {
             {/* Service Card 3 */}
             <div className={`transform transition-all duration-1000 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`} style={{ transitionDelay: '0.5s' }}>
               <div className="group">
-                <Card className="luxury-card h-full border-gold/20 rounded-none">
-                  <div className="relative h-56 bg-navy flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')] opacity-30 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"></div>
-                    <div className="absolute inset-0 bg-navy/70"></div>
-                    <div className="relative z-10 transition-transform duration-500 transform group-hover:scale-110">
-                      <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mb-2 mx-auto">
-                        <Handshake size={36} className="text-gold" />
+                <Card className="modern-card h-full border-[#333333] hover:border-[#39FF14]/30 overflow-visible">
+                  <div className="relative h-56 bg-[#2A2A2A] flex items-center justify-center overflow-hidden rounded-t-lg">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')] opacity-20 bg-center bg-cover transition-transform duration-700 group-hover:scale-110 rounded-t-lg"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#2A2A2A]/50 to-[#2A2A2A] rounded-t-lg"></div>
+                    <div className="relative z-10 transition-all duration-500 transform group-hover:scale-110 group-hover:-translate-y-2">
+                      <div className="w-24 h-24 feature-icon">
+                        <Handshake size={42} className="text-[#39FF14]" />
                       </div>
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                   </div>
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-playfair font-bold mb-4 text-navy group-hover:text-gold transition-colors duration-300">White-Glove Service</h3>
-                    <p className="text-navy/70 font-lora leading-relaxed mb-6">
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4 text-white group-hover:text-[#39FF14] transition-colors duration-300">White-Glove Service</h3>
+                    <p className="text-white/70 font-inter leading-relaxed mb-6">
                       Experience seamless deal coordination with our bespoke service handling every aspect of negotiations, contracts, and supplier onboarding.
                     </p>
                     <Link href="/services">
-                      <span className="text-navy font-medium font-playfair group-hover:text-gold inline-flex items-center transition-colors duration-300 cursor-pointer gold-underline">
+                      <span className="neon-underline text-white font-medium font-poppins group-hover:text-[#39FF14] inline-flex items-center transition-colors duration-300 cursor-pointer">
                         Discover Process 
-                        <ChevronRight size={18} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                        <ArrowUpRight size={18} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     </Link>
                   </CardContent>
@@ -209,87 +231,84 @@ export default function Home() {
       </section>
 
       {/* Most Liked Feature */}
-      <section className="py-section bg-navy text-white relative">
-        {/* Gold accents */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gold/30"></div>
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gold/30"></div>
+      <section className="py-section bg-[#1A1A1A] text-white relative overflow-hidden">
+        {/* Accent lines & effects */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-[#39FF14]/10"></div>
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#39FF14]/10"></div>
+        <div className="absolute -left-40 -bottom-40 w-[500px] h-[500px] rounded-full bg-[#39FF14]/5 filter blur-[150px] animate-pulse"></div>
         
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-3xl mx-auto">
-            <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-8">
-              <Star className="w-10 h-10 text-gold" />
+            <div className="feature-icon mx-auto mb-8">
+              <Star className="w-10 h-10 text-[#39FF14]" />
             </div>
-            <h2 className="text-4xl font-playfair font-bold mb-6 text-white">A Guiding Star for Excellence</h2>
-            <p className="text-xl leading-relaxed font-lora text-white/80 mb-10">
+            <h2 className="text-4xl font-poppins font-bold mb-6 text-white">A Guiding Star for Excellence</h2>
+            <p className="text-xl leading-relaxed font-inter text-white/80 mb-10">
               Our exclusive feedback-driven rating system highlights elite suppliers, ensuring you choose with absolute confidence. Authentic ratings from fellow premium SMEs illuminate your path to procurement excellence.
             </p>
             <Link href="/services">
-              <div className="inline-block">
-                <Button className="btn-gold px-8 py-3 text-base font-medium font-playfair tracking-wide">
-                  Discover Our Selection Process
-                </Button>
-              </div>
+              <button className="btn-neon px-8 py-3 text-base font-medium shadow-neon">
+                Discover Our Selection Process
+              </button>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-section bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-section bg-[#121212] relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-50 z-0"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <p className="text-gold font-medium font-playfair tracking-wider mb-3">TESTIMONIALS</p>
-            <h2 className="text-4xl font-playfair font-bold mb-6 text-navy">What Our Elite Clients Say</h2>
-            <div className="w-20 h-1 bg-gold mx-auto"></div>
+            <p className="text-[#39FF14] font-medium font-poppins tracking-wider mb-3">TESTIMONIALS</p>
+            <h2 className="text-4xl font-poppins font-bold mb-6 text-white">What Our Elite Clients Say</h2>
+            <div className="divider-neon-center"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Testimonial 1 */}
-            <div className="luxury-card border-gold/30 p-1 group">
-              <div className="bg-white p-8">
-                <div className="flex items-center mb-6">
-                  <div className="text-gold">
-                    <Quote size={40} className="opacity-30" />
+            <div className="dark-card group hover:shadow-neon transition-all duration-500">
+              <div className="flex items-center mb-6">
+                <div className="text-[#39FF14] opacity-40">
+                  <Quote size={40} />
+                </div>
+              </div>
+              <p className="text-white/80 mb-8 font-inter text-lg leading-relaxed">
+                "Ad Maiora delivered exceptional results, driving 10X sales growth for Amazon India. Their brand onboarding expertise and seamless coordination make them an invaluable strategic partner."
+              </p>
+              <div className="flex items-center">
+                <div className="rounded-full border border-[#39FF14]/20 w-14 h-14 flex items-center justify-center mr-5 overflow-hidden group-hover:border-[#39FF14]/50 transition-colors duration-300">
+                  <div className="bg-[#39FF14]/5 w-full h-full flex items-center justify-center">
+                    <span className="text-white font-poppins font-bold text-lg">PS</span>
                   </div>
                 </div>
-                <p className="text-navy/80 mb-8 italic font-lora text-lg leading-relaxed">
-                  "Ad Maiora delivered exceptional results, driving 10X sales growth for Amazon India. Their brand onboarding expertise and seamless coordination make them an invaluable strategic partner."
-                </p>
-                <div className="flex items-center">
-                  <div className="rounded-full border-2 border-gold/20 w-16 h-16 flex items-center justify-center mr-5 overflow-hidden">
-                    <div className="bg-navy/10 w-full h-full flex items-center justify-center">
-                      <span className="text-navy font-playfair font-bold text-xl">PS</span>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-bold font-playfair text-navy text-lg">Priya Sharma</p>
-                    <p className="text-sm text-navy/60 font-lora">Key Account Manager, Amazon India</p>
-                  </div>
+                <div>
+                  <p className="font-bold font-poppins text-white text-lg">Priya Sharma</p>
+                  <p className="text-sm text-white/60 font-inter">Key Account Manager, Amazon India</p>
                 </div>
               </div>
             </div>
             
             {/* Testimonial 2 */}
-            <div className="luxury-card border-gold/30 p-1 group">
-              <div className="bg-white p-8">
-                <div className="flex items-center mb-6">
-                  <div className="text-gold">
-                    <Quote size={40} className="opacity-30" />
+            <div className="dark-card group hover:shadow-neon transition-all duration-500">
+              <div className="flex items-center mb-6">
+                <div className="text-[#39FF14] opacity-40">
+                  <Quote size={40} />
+                </div>
+              </div>
+              <p className="text-white/80 mb-8 font-inter text-lg leading-relaxed">
+                "Ad Maiora transformed our tech course enrollment process at Acadeemia. Their tailored procurement strategies inspired students and faculty alike. They're truly the gold standard in the industry."
+              </p>
+              <div className="flex items-center">
+                <div className="rounded-full border border-[#39FF14]/20 w-14 h-14 flex items-center justify-center mr-5 overflow-hidden group-hover:border-[#39FF14]/50 transition-colors duration-300">
+                  <div className="bg-[#39FF14]/5 w-full h-full flex items-center justify-center">
+                    <span className="text-white font-poppins font-bold text-lg">AR</span>
                   </div>
                 </div>
-                <p className="text-navy/80 mb-8 italic font-lora text-lg leading-relaxed">
-                  "Ad Maiora transformed our tech course enrollment process at Acadeemia. Their tailored procurement strategies inspired students and faculty alike. They're truly the gold standard in the industry."
-                </p>
-                <div className="flex items-center">
-                  <div className="rounded-full border-2 border-gold/20 w-16 h-16 flex items-center justify-center mr-5 overflow-hidden">
-                    <div className="bg-navy/10 w-full h-full flex items-center justify-center">
-                      <span className="text-navy font-playfair font-bold text-xl">AR</span>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-bold font-playfair text-navy text-lg">Dr. Anjali Rao</p>
-                    <p className="text-sm text-navy/60 font-lora">Program Director, Acadeemia</p>
-                  </div>
+                <div>
+                  <p className="font-bold font-poppins text-white text-lg">Dr. Anjali Rao</p>
+                  <p className="text-sm text-white/60 font-inter">Program Director, Acadeemia</p>
                 </div>
               </div>
             </div>
@@ -298,9 +317,9 @@ export default function Home() {
           {/* CTA */}
           <div className="mt-20 text-center">
             <Link href="/success-stories">
-              <div className="inline-flex items-center text-navy hover:text-gold transition-colors duration-300 font-playfair font-medium text-lg group">
+              <div className="inline-flex items-center text-white hover:text-[#39FF14] transition-colors duration-300 font-poppins font-medium text-lg group">
                 View All Success Stories 
-                <ArrowRight size={20} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowUpRight size={20} className="ml-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-[-4px]" />
               </div>
             </Link>
           </div>
