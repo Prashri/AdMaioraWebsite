@@ -7,7 +7,7 @@ export default {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        rany: ["Rany", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -54,10 +54,10 @@ export default {
           dark: "#121212",
           border: "#333333",
         },
-        neon: {
-          DEFAULT: "#39FF14",
-          light: "#5AFF3D",
-          dark: "#28EB03",
+        purple: {
+          DEFAULT: "#9D4EDD",
+          light: "#B76EEF",
+          dark: "#7B2CBF",
         },
         chart: {
           "1": "hsl(var(--chart-1))",
@@ -108,18 +108,18 @@ export default {
         },
         glow: {
           "0%, 100%": { 
-            boxShadow: "0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.2)" 
+            boxShadow: "0 0 10px rgba(157, 78, 221, 0.5), 0 0 20px rgba(157, 78, 221, 0.2)" 
           },
           "50%": { 
-            boxShadow: "0 0 20px rgba(57, 255, 20, 0.8), 0 0 30px rgba(57, 255, 20, 0.4)" 
+            boxShadow: "0 0 20px rgba(157, 78, 221, 0.8), 0 0 30px rgba(157, 78, 221, 0.4)" 
           },
         },
         textGlow: {
           "0%, 100%": { 
-            textShadow: "0 0 5px rgba(57, 255, 20, 0.5), 0 0 10px rgba(57, 255, 20, 0.2)" 
+            textShadow: "0 0 5px rgba(157, 78, 221, 0.5), 0 0 10px rgba(157, 78, 221, 0.2)" 
           },
           "50%": { 
-            textShadow: "0 0 10px rgba(57, 255, 20, 0.8), 0 0 20px rgba(57, 255, 20, 0.4)" 
+            textShadow: "0 0 10px rgba(157, 78, 221, 0.8), 0 0 20px rgba(157, 78, 221, 0.4)" 
           },
         },
       },
@@ -136,18 +136,18 @@ export default {
         "section": "100px",
       },
       backgroundImage: {
-        "neon-gradient": "linear-gradient(135deg, #39FF14 0%, #5AFF3D 100%)",
+        "purple-gradient": "linear-gradient(135deg, #9D4EDD 0%, #B76EEF 100%)",
         "dark-gradient": "linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)",
         "dark-radial": "radial-gradient(circle at center, #2A2A2A 0%, #1A1A1A 100%)",
         "grid-pattern": "linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
       },
       boxShadow: {
-        neon: "0 0 5px rgba(57, 255, 20, 0.5), 0 0 15px rgba(57, 255, 20, 0.3)",
-        "neon-lg": "0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.3)",
+        purple: "0 0 5px rgba(157, 78, 221, 0.5), 0 0 15px rgba(157, 78, 221, 0.3)",
+        "purple-lg": "0 0 10px rgba(157, 78, 221, 0.5), 0 0 20px rgba(157, 78, 221, 0.3)",
         "inner-white": "inset 0 0 15px rgba(255, 255, 255, 0.1)",
       },
       textShadow: {
-        neon: "0 0 5px rgba(57, 255, 20, 0.5), 0 0 10px rgba(57, 255, 20, 0.3)",
+        purple: "0 0 5px rgba(157, 78, 221, 0.5), 0 0 10px rgba(157, 78, 221, 0.3)",
       },
       backdropFilter: {
         'blur-xs': 'blur(2px)',
