@@ -39,22 +39,31 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-md fixed w-full top-0 z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/">
-          <a className="font-['Dancing_Script'] text-3xl font-bold text-[#1E3A8A]">Ad Maiora</a>
-        </Link>
+    <header className="bg-gradient-to-r from-[#1E3A8A]/95 to-[#1E3A8A] text-white fixed w-full top-0 z-50 shadow-lg">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="font-['Dancing_Script'] text-3xl font-bold">
+          <Link href="/">
+            Ad Maiora
+          </Link>
+        </div>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
-            <Link href={link.href} key={link.name}>
-              <a className={`font-['Montserrat'] font-medium ${
-                location === link.href ? "text-[#1E3A8A]" : "text-neutral-800 hover:text-[#1E3A8A]"
-              } transition`}>
-                {link.name}
-              </a>
-            </Link>
+            <div key={link.name} className="relative group">
+              <Link href={link.href}>
+                <span className={`font-['Montserrat'] font-medium cursor-pointer ${
+                  location === link.href 
+                    ? "text-white" 
+                    : "text-white/90 hover:text-white"
+                } transition duration-300 ease-in-out`}>
+                  {link.name}
+                </span>
+              </Link>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#22C55E] transition-all duration-300 group-hover:w-full ${
+                location === link.href ? "w-full" : ""
+              }`}></span>
+            </div>
           ))}
         </nav>
         
@@ -63,7 +72,7 @@ export default function Header() {
           variant="ghost" 
           size="icon" 
           onClick={toggleMenu} 
-          className="md:hidden"
+          className="md:hidden text-white hover:bg-[#1E3A8A]/20"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </Button>
@@ -71,16 +80,20 @@ export default function Header() {
       
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="bg-white md:hidden px-4 py-3 shadow-lg">
-          <div className="flex flex-col space-y-3">
+        <nav className="bg-[#1E3A8A]/95 md:hidden px-4 py-3 shadow-lg">
+          <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
-              <Link href={link.href} key={link.name}>
-                <a className={`font-['Montserrat'] font-medium ${
-                  location === link.href ? "text-[#1E3A8A]" : "text-neutral-800 hover:text-[#1E3A8A]"
-                } transition py-2`}>
-                  {link.name}
-                </a>
-              </Link>
+              <div key={link.name}>
+                <Link href={link.href}>
+                  <span className={`block font-['Montserrat'] font-medium py-2 cursor-pointer ${
+                    location === link.href 
+                      ? "text-[#22C55E]" 
+                      : "text-white hover:text-[#22C55E]"
+                  } transition duration-300 ease-in-out`}>
+                    {link.name}
+                  </span>
+                </Link>
+              </div>
             ))}
           </div>
         </nav>
