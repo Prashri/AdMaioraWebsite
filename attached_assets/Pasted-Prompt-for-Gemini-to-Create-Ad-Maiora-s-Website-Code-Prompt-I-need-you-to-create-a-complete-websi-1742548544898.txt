@@ -1,0 +1,166 @@
+Prompt for Gemini to Create Ad Maiora’s Website Code
+Prompt:
+I need you to create a complete website code (HTML, CSS, and JavaScript) for my business, Ad Maiora, a procurement consulting firm for Indian SMEs. The website should be professional, approachable, and mobile-responsive, designed to build trust, address hesitations, and encourage engagement from small and medium enterprises in India. Below are the detailed requirements:
+Website Purpose and Audience
+Purpose: To simplify procurement for Indian SMEs by connecting them with reliable suppliers, offering a human-first approach, and showcasing our unique “Most Liked by Clients” feature. The website should build rapport (30%), establish trust (40%), and overcome hesitations (30%) through its content and design.  
+
+Target Audience: Indian SMEs (small and medium enterprises) looking for affordable, fast, and reliable procurement solutions. They face challenges like delays, high costs, and unreliable suppliers, and they value trust, efficiency, and transparency.
+Design Preferences
+Colors: Use blues (e.g., #1E3A8A for headings) for trust, greens (e.g., #22C55E for accents) for vitality, and whites/light grays (e.g., #F9FAFB for backgrounds) for professionalism.  
+
+Fonts: Use a bold sans-serif font like Montserrat for headings and a clean, readable font like Open Sans for body text.  
+
+Layout: Modern, clean, and mobile-responsive with intuitive navigation. Include a sticky header with the logo and navigation links.  
+
+Logo: Assume a handwritten “Ad Maiora” logo is placed in the header (you can use a placeholder text styled in a cursive font like “Dancing Script” for now).
+Content Structure
+The website should have the following sections:
+Homepage  
+Hero Section:  
+Headline: “Is Your Procurement Chaos Stalling Your Dreams?”  
+
+Subheadline: “Every delay, every hidden cost, every unreliable supplier—eating away at your growth. Isn’t it time your business broke free from the mess?”  
+
+Call-to-Action (CTA): A button labeled “Contact Us for Pricing” that links to the Contact Us section.
+What We Offer:  
+Three cards with icons:  
+“Find Suppliers”: “Connect with trusted vendors tailored to your needs.”  
+
+“Get a Report”: “Receive a detailed supplier report with actionable insights.”  
+
+“Coordinate Deals”: “Let us handle the setup while you focus on success.”
+Most Liked by Clients:  
+Text: “ A Guiding Star for Success: Our feedback-driven system highlights top-rated suppliers, ensuring you choose with confidence. Real ratings from fellow SMEs light your path to better decisions.”
+Testimonials:  
+“Ad Maiora delivered 10X sales growth for Amazon India! Their brand onboarding and coordination are seamless. A true partner!” — Priya Sharma, Key Account Manager, Amazon India  
+
+“Ad Maiora boosted tech course enrollments at Acadeemia! Their tailored strategies inspired students. They’re a game-changer!” — Dr. Anjali Rao, Program Director, Acadeemia
+About Us  
+Headline: “Our Mission: Toward Greater Things”  
+
+Subheadline: “In Simplicity Lies Greatness”  
+
+Content: “Ad Maiora, meaning ‘toward greater things,’ is here to lift Indian SMEs to new heights. We simplify procurement with a human-first approach, ensuring you work directly with our founder for a personal, trustworthy experience. Your success is our mission.”  
+
+Founder’s Photo: Placeholder for a photo with caption: “Meet [Founder’s Name], dedicated to making procurement painless and empowering SMEs across India.”  
+
+Values:  
+“Efficiency: Fast, reliable solutions.”  
+
+“Trust: Vendors you can count on.”  
+
+“Transparency: Clear processes, no surprises.”
+Services  
+Headline: “How It Works”  
+
+Subheadline: “Efficiency is the Soul of Business”  
+
+Content: A numbered list:  
+“Free Consultation: We listen to your needs.”  
+
+“Sign Up: Quick onboarding to get started.”  
+
+“Supplier Research: We find the best vendors for you.”  
+
+“Report Delivery: Get a detailed, actionable report.”  
+
+“Client Negotiation: You choose the supplier that fits.”  
+
+“Deal Coordination: We finalize the details.”  
+
+“Feedback Collection: Your input shapes our future.”
+Most Liked by Clients: “A Beacon of Enlightenment: Our unique feature highlights top-rated suppliers based on real SME feedback, ensuring you always choose quality.”  
+
+How We Earn: “Commerce with Honor: We earn only when you succeed—through commissions from suppliers after deals close. Your growth is our victory.”
+Contact Us  
+Headline: “Let’s Simplify Your Procurement”  
+
+Subheadline: “The Journey to Greater Things Begins Now”  
+
+Form: Fields for Name, Email, and Message.  
+
+Contact Details:  
+Email: [info@admaiora.in (mailto:info@admaiora.in)]  
+
+LinkedIn: [Ad Maiora Profile] (use a placeholder link).
+Note: “For pricing details, fill out the form or email us—we’ll respond swiftly!”
+Blog  
+Headline: “Insights for Indian SMEs”  
+
+Subheadline: “Think Different”  
+
+Content: Three blog post previews:  
+“SME Insights: ‘How to Scale Your Business Without Breaking the Bank’”  
+
+“Vendor Spotlights: ‘Meet the Suppliers Powering India’s SMEs’”  
+
+“Procurement Tips: ‘Top 3 Mistakes SMEs Make in Procurement (And How to Avoid Them)’”
+Success Stories  
+Headline: “Real Results, Real SMEs”  
+
+Subheadline: “A Strategy of Conquest Through Service”  
+
+Story 1:  
+Client: Sharma Textiles, Delhi  
+
+Challenge: Struggled to find affordable fabric suppliers.  
+
+Solution: Ad Maiora delivered a curated supplier report in 48 hours.  
+
+Outcome: Saved 20% on costs and signed a long-term deal.
+Story 2:  
+Client: TechTrend Innovations, Bengaluru  
+
+Challenge: Needed niche component suppliers fast.  
+
+Solution: We coordinated a deal with a top-rated vendor.  
+
+Outcome: Reduced procurement time by 30% and met deadlines.
+FAQ  
+Headline: “Your Questions, Answered”  
+
+Subheadline: “Knowledge is the Surest Basis of Happiness”  
+
+Questions:  
+“How does Ad Maiora find suppliers? We research and vet vendors based on your needs and our ‘Most Liked by Clients’ feedback.”  
+
+“What types of suppliers do you work with? From raw materials to tech solutions, we cover all SME needs.”  
+
+“How do you ensure supplier quality? Client feedback and rigorous vetting keep our standards high.”  
+
+“What if I’m not satisfied with the suppliers? We’ll refine the search until you’re happy—your success is our priority.”
+Functionality Requirements
+Navigation: A sticky header with links to Home, About Us, Services, Contact Us, Blog, Success Stories, and FAQ.  
+
+Mobile-Responsive: Ensure the layout adapts seamlessly to mobile devices.  
+
+Form Functionality: The Contact Us form should collect user input (Name, Email, Message) and display a confirmation message upon submission (use JavaScript for this).  
+
+Interactive Elements: Add hover effects to buttons and cards for a modern feel.  
+
+Footer: Include a footer with the email, LinkedIn link, and a copyright notice: “© 2025 Ad Maiora. All rights reserved.”
+Tone and Style
+Use a professional yet approachable tone that’s enthusiastic, empathetic, and persuasive.  
+
+Focus on the problems SMEs face (delays, costs, unreliable suppliers) and position Ad Maiora as the solution without being overly salesy.  
+
+Highlight the human-first approach and the “Most Liked by Clients” feature to build trust.
+Deliverables
+Please provide the complete code in three parts:  
+HTML: The structure of the website with all sections.  
+
+CSS: Styling to match the design preferences (colors, fonts, mobile-responsiveness).  
+
+JavaScript: Functionality for the form submission and interactive elements like hover effects.
+Ensure the code is well-commented for clarity and easy to customize. Let me know if you need any additional details to complete this task!
+Why This Prompt Works
+Clarity: It provides a detailed breakdown of the website’s purpose, audience, design, content, and functionality, leaving little room for ambiguity.
+
+Structure: The sections are clearly defined with specific content, ensuring Gemini knows exactly what to include.
+
+Tone and Style: It specifies the tone (professional, empathetic, persuasive) and emphasizes the problem-centric approach you prefer.
+
+Technical Details: It includes specific colors, fonts, and functionality requirements (e.g., mobile-responsiveness, form submission) to guide the code generation.
+
+Client Focus: It keeps the focus on Indian SMEs’ challenges and how Ad Maiora addresses them, aligning with your preference for problem-centric content.
+
