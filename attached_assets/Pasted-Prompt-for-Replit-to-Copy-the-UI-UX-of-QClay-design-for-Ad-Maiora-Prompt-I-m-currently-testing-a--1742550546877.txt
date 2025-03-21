@@ -1,0 +1,130 @@
+Prompt for Replit to Copy the UI/UX of QClay.design for Ad Maiora
+Prompt:
+I’m currently testing a website code (HTML, CSS, and JavaScript) for my business, Ad Maiora, on Replit. The website is a procurement consulting firm targeting Indian SMEs, and I’m happy with the content, which includes sections like Homepage, About Us, Services, Contact Us, Blog, Success Stories, and FAQ. However, I want to enhance the UI/UX to look and feel exactly like the website https://qclay.design, while keeping my existing content unchanged. The current code has basic styling and functionality, but it lacks the modern, sleek, and visually stunning design of QClay.design. I need you to modify the existing code to replicate the UI/UX of QClay.design, ensuring the design, layout, typography, colors, animations, and interactions match as closely as possible. Below are the detailed requirements for the modifications:
+Current Situation
+I’m testing the code on Replit, and it includes:  
+HTML: A structure with all sections (Homepage, About Us, Services, Contact Us, Blog, Success Stories, FAQ).  
+
+CSS: Basic styling with colors (blues, greens, whites), fonts (Montserrat for headings, Open Sans for body text), and a simple layout.  
+
+JavaScript: Basic functionality for a Contact Us form (submission with a confirmation message) and some hover effects on buttons.
+The current UI/UX is functional but doesn’t match the modern, creative, and visually engaging experience of QClay.design.
+Reference Website: QClay.design
+If you can access and inspect https://qclay.design, please analyze its UI/UX elements (layout, colors, typography, animations, interactions) and replicate them exactly in my website code.  
+
+If you cannot access the site directly, use the following description of QClay.design’s UI/UX based on its reputation as a creative design agency (known from platforms like Dribbble, LinkedIn, and Webflow):
+QClay.design UI/UX Description
+QClay.design is a creative design agency’s portfolio website, known for a modern, sleek, and visually stunning UI/UX. Here are the key features to replicate:  
+Colors: A bold, modern palette with a dark background (e.g., #1A1A1A or near-black) paired with vibrant accents (e.g., neon green #39FF14 or electric blue #00DDEB) for buttons, links, and highlights. White (#FFFFFF) or light gray (#E0E0E0) is used for text to ensure readability. Subtle gradients (e.g., dark gray to black) add depth to sections.  
+
+Typography:  
+Headings: A bold, modern sans-serif font like Futura or Poppins in large sizes (e.g., 60px for H1, 40px for H2) with generous letter-spacing (e.g., 2px) for a futuristic feel.  
+
+Body Text: A clean sans-serif like Inter or Roboto in a smaller size (e.g., 16px) for readability, with a slightly increased line height (e.g., 1.6) for elegance.
+Layout:  
+Full-width sections with a dark background and a clean, minimalist design.  
+
+Generous spacing between sections (e.g., 100px padding) for a spacious, uncluttered feel.  
+
+A fixed header with a transparent background that becomes solid (dark) on scroll, featuring a sleek logo and navigation links with a hover effect (e.g., underline in neon green).  
+
+Mobile-responsive with a modern hamburger menu (neon green icon) that expands smoothly into a full-screen overlay with white text on a dark background.
+Imagery and Visuals:  
+Hero Section: A full-width, high-quality background image or video (use a placeholder) with a subtle overlay (e.g., dark gradient) and bold, centered text.  
+
+Other Sections: Use placeholders for large, vibrant visuals (e.g., creative project mockups, 3D illustrations) with a slight hover effect (e.g., scale up by 1.05x).
+Buttons and Cards:  
+Buttons: Rounded, bold buttons with a neon accent color (e.g., #39FF14) and white text, featuring a glow effect on hover (use CSS box-shadow).  
+
+Cards: Dark cards with a subtle border (e.g., #333333) and a hover effect (e.g., lift with a shadow and neon outline).
+Animations and Interactions:  
+Smooth scrolling for a seamless experience.  
+
+Fade-in animations for section content as users scroll (e.g., cards, testimonials).  
+
+Parallax scrolling for the hero section background to create depth.  
+
+Subtle hover effects: buttons glow, cards lift, and links get a neon underline.  
+
+A preloader with a neon green spinning animation (use CSS) for a modern first impression.
+UI/UX Enhancements to Match QClay.design
+Apply the following changes to my existing code to replicate QClay.design’s UI/UX:  
+Colors: Update to a dark theme with #1A1A1A backgrounds, #39FF14 neon green accents, and #FFFFFF white text. Add subtle gradients (dark gray to black) for depth.  
+
+Typography:  
+Headings: Use Futura or Poppins, bold, with large sizes (60px for H1, 40px for H2) and 2px letter-spacing.  
+
+Body Text: Use Inter or Roboto, 16px, with a 1.6 line height.
+Layout:  
+Make sections full-width with a dark background and 100px padding between sections.  
+
+Update the header to be fixed with a transparent background (solid dark on scroll) and navigation links with a neon green underline on hover.  
+
+Add a mobile hamburger menu (neon green icon) that expands into a full-screen overlay with white text on a dark background.
+Imagery:  
+Hero Section: Add a full-width placeholder for a background image or video with a dark gradient overlay.  
+
+Other Sections: Add placeholders for large, vibrant visuals (e.g., project mockups) with a scale-up hover effect (1.05x).
+Buttons and Cards:  
+Buttons: Style with a neon green background (#39FF14), white text, rounded corners, and a glow effect on hover (use box-shadow).  
+
+Cards: Use a dark background (#2A2A2A) with a subtle border (#333333) and a hover effect (lift with shadow and neon outline).
+Animations and Interactions:  
+Add smooth scrolling (use JavaScript).  
+
+Implement fade-in animations for section content on scroll (e.g., cards, testimonials).  
+
+Add parallax scrolling to the hero section background.  
+
+Add hover effects: buttons glow, cards lift, links get a neon green underline.  
+
+Add a preloader with a neon green spinning animation (use CSS).
+Form Usability:  
+Enhance the Contact Us form with a dark background, neon green borders, and a glow effect on focus for input fields.  
+
+Update the form submission to display a confirmation message with a fade-in animation (use JavaScript).  
+
+Add real-time validation (e.g., highlight empty fields in red).
+Accessibility:  
+Ensure sufficient color contrast (e.g., white text on dark backgrounds).  
+
+Add keyboard navigation support for the menu and form.
+Specific UI/UX Enhancements by Section
+Homepage:  
+Hero Section: Add a parallax effect to the background and a neon glow effect to the CTA button on hover.  
+
+What We Offer: Add a scale-up animation to cards on hover.  
+
+Most Liked by Clients: Style the star icon in neon green with a glow effect.  
+
+Testimonials: Add a carousel effect with smooth transitions (use JavaScript) and neon green borders around testimonial cards.
+About Us:  
+Add a neon green frame effect to the founder’s photo placeholder.  
+
+Style the values list with neon green bullet points and a fade-in animation on scroll.
+Services:  
+Style the numbered list with neon green bullet points and a hover effect (e.g., underline in neon green).  
+
+Add a neon green divider line between sections.
+Contact Us:  
+Enhance the form with a dark background, neon green borders, and a glow effect on focus.  
+
+Style contact details (email, LinkedIn) in neon green with a hover effect (e.g., underline).
+Blog:  
+Add dark cards with neon green borders for blog post previews with a tilt effect on hover (use CSS transform).
+Success Stories:  
+Add a neon green border and shadow to success story cards with a fade-in animation on scroll.
+FAQ:  
+Use an accordion-style layout (expand/collapse) for questions with neon green icons and smooth transitions (use JavaScript).
+Footer Enhancements
+Update to a dark footer with neon green text:  
+Email, LinkedIn link, and a copyright notice: “© 2025 Ad Maiora. All Rights Reserved.”
+Add a subtle gradient background (dark gray to black) and a neon green divider line at the top of the footer.
+Deliverables
+Please modify the existing code on Replit in three parts:  
+HTML: Adjust the structure only where needed to support new UI elements (e.g., parallax divs, accordion for FAQ).  
+
+CSS: Update styling to match QClay.design’s UI preferences (colors, fonts, animations, mobile-responsiveness).  
+
+JavaScript: Enhance functionality for smooth scrolling, parallax effects, fade-in animations, glow effects, form validation, carousel, and accordion interactions.
+

@@ -6,9 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        lora: ["Lora", "serif"],
-        greatVibes: ["Great Vibes", "cursive"],
+        poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -49,15 +48,16 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        navy: {
-          DEFAULT: "#0A1D37",
-          light: "#152A4A",
-          dark: "#071628",
+        dark: {
+          DEFAULT: "#1A1A1A",
+          light: "#2A2A2A",
+          dark: "#121212",
+          border: "#333333",
         },
-        gold: {
-          DEFAULT: "#D4AF37",
-          light: "#E9CE6D",
-          dark: "#B3941C",
+        neon: {
+          DEFAULT: "#39FF14",
+          light: "#5AFF3D",
+          dark: "#28EB03",
         },
         chart: {
           "1": "hsl(var(--chart-1))",
@@ -102,19 +102,55 @@ export default {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        scaleIn: {
+          from: { transform: "scale(0.95)", opacity: "0" },
+          to: { transform: "scale(1)", opacity: "1" },
+        },
+        glow: {
+          "0%, 100%": { 
+            boxShadow: "0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.2)" 
+          },
+          "50%": { 
+            boxShadow: "0 0 20px rgba(57, 255, 20, 0.8), 0 0 30px rgba(57, 255, 20, 0.4)" 
+          },
+        },
+        textGlow: {
+          "0%, 100%": { 
+            textShadow: "0 0 5px rgba(57, 255, 20, 0.5), 0 0 10px rgba(57, 255, 20, 0.2)" 
+          },
+          "50%": { 
+            textShadow: "0 0 10px rgba(57, 255, 20, 0.8), 0 0 20px rgba(57, 255, 20, 0.4)" 
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shimmer: "shimmer 8s ease-in-out infinite",
         fadeIn: "fadeIn 0.8s ease-out forwards",
+        scaleIn: "scaleIn 0.5s ease-out forwards",
+        glow: "glow 2s infinite",
+        textGlow: "textGlow 2s infinite",
       },
       spacing: {
-        "section": "80px",
+        "section": "100px",
       },
       backgroundImage: {
-        "gold-gradient": "linear-gradient(135deg, #D4AF37 0%, #E9CE6D 100%)",
-        "navy-gradient": "linear-gradient(135deg, #0A1D37 0%, #152A4A 100%)",
+        "neon-gradient": "linear-gradient(135deg, #39FF14 0%, #5AFF3D 100%)",
+        "dark-gradient": "linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)",
+        "dark-radial": "radial-gradient(circle at center, #2A2A2A 0%, #1A1A1A 100%)",
+        "grid-pattern": "linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
+      },
+      boxShadow: {
+        neon: "0 0 5px rgba(57, 255, 20, 0.5), 0 0 15px rgba(57, 255, 20, 0.3)",
+        "neon-lg": "0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.3)",
+        "inner-white": "inset 0 0 15px rgba(255, 255, 255, 0.1)",
+      },
+      textShadow: {
+        neon: "0 0 5px rgba(57, 255, 20, 0.5), 0 0 10px rgba(57, 255, 20, 0.3)",
+      },
+      backdropFilter: {
+        'blur-xs': 'blur(2px)',
       },
     },
   },

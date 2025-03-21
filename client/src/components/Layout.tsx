@@ -8,35 +8,63 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Simulating page loading
+  // Simulating page loading with a more dramatic animation
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 2000);
     
     return () => clearTimeout(timer);
+  }, []);
+  
+  // Handle scroll effect for the header
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
     <>
-      {/* Luxury Preloader */}
+      {/* Modern QClay-style Preloader */}
       {loading && (
-        <div className="fixed inset-0 bg-navy z-50 flex items-center justify-center flex-col">
-          <div className="relative w-20 h-20">
-            <div className="spinner" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-10 h-10 bg-navy rounded-full"></div>
+        <div className="preloader">
+          <div className="flex flex-col items-center justify-center">
+            <div className="preloader-spinner mb-8"></div>
+            <div className="text-3xl font-poppins font-bold tracking-wider text-white mb-2">
+              Ad <span className="text-[#39FF14] neon-glow">Maiora</span>
             </div>
+            <p className="text-white/60 text-sm font-inter tracking-widest uppercase">
+              Procurement Excellence
+            </p>
           </div>
-          <div className="mt-8 font-greatVibes text-3xl text-gold animate-pulse">Ad Maiora</div>
-          <p className="text-white/60 text-sm mt-2 font-playfair tracking-widest">EXCELLENCE AWAITS</p>
         </div>
       )}
       
-      <div className={`flex flex-col min-h-screen transition-opacity duration-700 ${loading ? 'opacity-0' : 'opacity-100'}`}>
-        <Header />
+      <div className={`flex flex-col min-h-screen bg-[#1A1A1A] transition-opacity duration-700 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+        {/* QClay-style fixed transparent header that becomes solid on scroll */}
+        <div className={`header-transparent ${scrolled ? 'header-solid' : ''}`}>
+          <Header />
+        </div>
+        
+        {/* Push content down to account for fixed header */}
+        <div className="pt-24"></div>
+        
+        {/* Main content */}
         <main className="flex-grow">{children}</main>
+        
+        {/* Footer */}
         <Footer />
       </div>
     </>
