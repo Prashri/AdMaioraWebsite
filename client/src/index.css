@@ -14,6 +14,29 @@
     --gold: #D4AF37;
     --gold-light: #E9CE6D;
     --gold-dark: #B3941C;
+    
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    
+    --py-section: 6rem;
   }
 
   * {
@@ -29,7 +52,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair text-[#0A1D37] tracking-wide;
+    @apply font-playfair text-navy tracking-wide;
   }
 
   h1 {
@@ -43,12 +66,22 @@
   h3 {
     @apply text-xl md:text-2xl font-bold;
   }
+  
+  p {
+    @apply leading-relaxed;
+  }
+  
+  .py-section {
+    @apply py-16 md:py-24;
+  }
 }
 
 @layer components {
+  /* Button Styles */
   .btn-gold {
-    @apply bg-[#D4AF37] text-white font-medium py-3 px-6 rounded-md shadow-md 
-           transition-all duration-300 relative overflow-hidden;
+    @apply bg-gold hover:bg-gold-dark text-white font-medium py-3 px-6 
+           rounded-none shadow-md transition-all duration-300 
+           relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-gold/50;
   }
 
   .btn-gold::before {
@@ -60,14 +93,33 @@
   .btn-gold:hover::before {
     @apply transform translate-x-full;
   }
-
+  
+  .btn-navy {
+    @apply bg-navy hover:bg-navy-light text-white font-medium py-3 px-6 
+           rounded-none shadow-md transition-all duration-300 
+           relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-navy/50;
+  }
+  
+  .btn-outline-gold {
+    @apply border-2 border-gold bg-transparent text-gold hover:bg-gold/5 
+           font-medium py-3 px-6 rounded-none transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-gold/50;
+  }
+  
+  .btn-outline-navy {
+    @apply border-2 border-navy bg-transparent text-navy hover:bg-navy/5
+           font-medium py-3 px-6 rounded-none transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-navy/50;
+  }
+  
+  /* Text and Section Styles */
   .gold-underline {
     @apply relative inline-block;
   }
 
   .gold-underline::after {
     content: '';
-    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-[#D4AF37] 
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-gold 
            transition-all duration-300 ease-in-out;
   }
 
@@ -81,23 +133,121 @@
 
   .section-title::after {
     content: '';
-    @apply absolute left-0 bottom-0 w-20 h-[2px] bg-[#D4AF37];
+    @apply absolute left-0 bottom-0 w-20 h-[2px] bg-gold;
+  }
+  
+  .section-title-center {
+    @apply relative pb-3 mb-6 text-center;
+  }
+  
+  .section-title-center::after {
+    content: '';
+    @apply absolute left-1/2 -translate-x-1/2 bottom-0 w-20 h-[2px] bg-gold;
+  }
+  
+  .text-gold-custom {
+    color: var(--gold);
+  }
+  
+  .text-navy-custom {
+    color: var(--navy);
+  }
+  
+  .bg-navy-custom {
+    background-color: var(--navy);
+  }
+  
+  .bg-gold-custom {
+    background-color: var(--gold);
   }
 
-  /* Luxury card styling */
+  /* Card Styles */
   .luxury-card {
-    @apply bg-white rounded-md border border-[#D4AF37]/20 shadow-md 
+    @apply bg-white rounded-none border border-gold/20 shadow-md 
            transition-all duration-300 overflow-hidden;
   }
 
   .luxury-card:hover {
-    @apply shadow-lg border-[#D4AF37]/40 transform -translate-y-1;
+    @apply shadow-lg border-gold/40 transform -translate-y-1;
+  }
+  
+  .premium-card {
+    @apply bg-white rounded-none border-l-4 border-gold shadow-lg 
+           transition-all duration-300 overflow-hidden p-8;
+  }
+  
+  .navy-card {
+    @apply bg-navy rounded-none text-white border border-navy/20 shadow-md
+           transition-all duration-300 overflow-hidden;
+  }
+  
+  .navy-card:hover {
+    @apply shadow-lg border-gold/20;
   }
 
-  /* Form input styling */
+  /* Form Styles */
   .input-gold {
-    @apply border-[#D4AF37]/30 rounded-md py-3 px-4 focus:border-[#D4AF37] 
-           focus:ring-1 focus:ring-[#D4AF37] transition-all duration-300;
+    @apply border-gold/30 rounded-none bg-white/80 py-3 px-4 
+           focus:border-gold focus:ring-1 focus:ring-gold focus:bg-white
+           transition-all duration-300;
+  }
+  
+  .form-label-gold {
+    @apply font-playfair text-navy/80 font-medium mb-2 block;
+  }
+  
+  /* Dividers */
+  .divider-gold {
+    @apply w-20 h-1 bg-gold my-6 block;
+  }
+  
+  .divider-gold-center {
+    @apply w-20 h-1 bg-gold my-6 mx-auto block;
+  }
+  
+  .divider-navy {
+    @apply w-20 h-1 bg-navy my-6 block;
+  }
+  
+  .divider-navy-center {
+    @apply w-20 h-1 bg-navy my-6 mx-auto block;
+  }
+  
+  /* Images */
+  .img-gold-border {
+    @apply border-8 border-gold/20;
+  }
+  
+  /* Feature Elements */
+  .feature-icon {
+    @apply w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mb-4;
+  }
+  
+  .feature-icon-sm {
+    @apply w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mr-4 flex-shrink-0;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply relative py-2 text-navy hover:text-gold transition-colors duration-300;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 w-0 h-[2px] bg-gold 
+           transition-all duration-300 ease-in-out;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .nav-link-active {
+    @apply text-gold;
+  }
+  
+  .nav-link-active::after {
+    @apply w-full;
   }
 }
 
@@ -112,7 +262,7 @@
 }
 
 .shimmer {
-  background: linear-gradient(270deg, #D4AF37, #FFFFFF, #D4AF37);
+  background: linear-gradient(270deg, var(--gold), #FFFFFF, var(--gold));
   background-size: 1000% 100%;
   animation: shimmer 8s ease-in-out infinite;
 }
@@ -124,6 +274,10 @@
 }
 
 .fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fadeIn {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
@@ -150,7 +304,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: conic-gradient(#0000 10%, #D4AF37);
+  background: conic-gradient(#0000 10%, var(--gold));
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
   animation: rotate 1.5s infinite linear;
 }
@@ -169,12 +323,58 @@
   background-size: cover;
 }
 
-/* Gold gradient background */
+/* Background styles */
 .gold-gradient {
-  background: linear-gradient(135deg, #D4AF37 0%, #E9CE6D 100%);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
 }
 
-/* Navy gradient background */
 .navy-gradient {
-  background: linear-gradient(135deg, #0A1D37 0%, #152A4A 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+
+.diagonal-gradient {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.diagonal-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--navy) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* Specialized text styling */
+.elegant-quote {
+  @apply font-playfair italic text-xl md:text-2xl text-navy/80 relative pl-6 border-l-4 border-gold/50 py-2;
+}
+
+.testimonial-quote {
+  @apply relative pl-10 text-lg italic font-lora text-navy/70;
+}
+
+.testimonial-quote::before {
+  content: '"';
+  @apply absolute top-0 left-0 text-6xl font-playfair text-gold/30 leading-none;
+}
+
+/* Hover effects */
+.hover-gold {
+  @apply transition-colors duration-300 hover:text-gold;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-shadow {
+  @apply transition-shadow duration-300 hover:shadow-lg;
+}
+
+/* Service number badge */
+.service-number {
+  @apply w-12 h-12 bg-gold text-white rounded-full flex items-center justify-center
+         text-xl font-playfair font-bold -mt-6 shadow-md z-10;
 }
