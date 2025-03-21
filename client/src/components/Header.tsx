@@ -43,7 +43,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <span className="font-poppins text-2xl md:text-3xl font-bold tracking-wide cursor-pointer">
-            Ad<span className="text-[#39FF14] neon-glow ml-1">Maiora</span>
+            Ad<span className="text-purple neon-glow ml-1">Maiora</span>
           </span>
         </Link>
         
@@ -80,7 +80,7 @@ export default function Header() {
           <div className="flex justify-between items-center mb-16">
             <Link href="/">
               <span className="font-poppins text-3xl font-bold tracking-wide cursor-pointer">
-                Ad<span className="text-[#39FF14] neon-glow ml-1">Maiora</span>
+                Ad<span className="text-purple neon-glow ml-1">Maiora</span>
               </span>
             </Link>
             
@@ -106,8 +106,8 @@ export default function Header() {
                   <Link href={link.href}>
                     <span className={`text-3xl font-poppins font-medium tracking-wider cursor-pointer transition-all duration-300 ${
                       location === link.href 
-                        ? "text-[#39FF14] neon-glow" 
-                        : "text-white hover:text-[#39FF14]"
+                        ? "text-purple neon-glow" 
+                        : "text-white hover:text-purple"
                     }`}>
                       {link.name}
                     </span>

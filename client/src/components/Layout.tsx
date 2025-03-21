@@ -43,7 +43,7 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex flex-col items-center justify-center">
             <div className="preloader-spinner mb-8"></div>
             <div className="text-3xl font-poppins font-bold tracking-wider text-white mb-2">
-              Ad <span className="text-[#39FF14] neon-glow">Maiora</span>
+              Ad <span className="text-purple neon-glow">Maiora</span>
             </div>
             <p className="text-white/60 text-sm font-inter tracking-widest uppercase">
               Procurement Excellence
