@@ -5,6 +5,11 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        playfair: ["Playfair Display", "serif"],
+        lora: ["Lora", "serif"],
+        greatVibes: ["Great Vibes", "cursive"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -44,6 +49,16 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        navy: {
+          DEFAULT: "#0A1D37",
+          light: "#152A4A",
+          dark: "#071628",
+        },
+        gold: {
+          DEFAULT: "#D4AF37",
+          light: "#E9CE6D",
+          dark: "#B3941C",
+        },
         chart: {
           "1": "hsl(var(--chart-1))",
           "2": "hsl(var(--chart-2))",
@@ -79,10 +94,27 @@ export default {
             height: "0",
           },
         },
+        shimmer: {
+          "0%": { backgroundPosition: "-1000px 0" },
+          "100%": { backgroundPosition: "1000px 0" },
+        },
+        fadeIn: {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 8s ease-in-out infinite",
+        fadeIn: "fadeIn 0.8s ease-out forwards",
+      },
+      spacing: {
+        "section": "80px",
+      },
+      backgroundImage: {
+        "gold-gradient": "linear-gradient(135deg, #D4AF37 0%, #E9CE6D 100%)",
+        "navy-gradient": "linear-gradient(135deg, #0A1D37 0%, #152A4A 100%)",
       },
     },
   },

@@ -1,13 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --navy: #0A1D37;
+    --navy-light: #152A4A;
+    --navy-dark: #071628;
+    --gold: #D4AF37;
+    --gold-light: #E9CE6D;
+    --gold-dark: #B3941C;
+  }
+
   * {
     @apply border-border;
   }
 
-  body {
-    @apply font-sans antialiased bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply font-lora antialiased bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair text-[#0A1D37] tracking-wide;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold leading-tight;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl font-bold;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-[#D4AF37] text-white font-medium py-3 px-6 rounded-md shadow-md 
+           transition-all duration-300 relative overflow-hidden;
+  }
+
+  .btn-gold::before {
+    content: '';
+    @apply absolute inset-0 w-full h-full bg-white/10 
+           transform -translate-x-full skew-x-12 transition-transform duration-700 ease-out;
+  }
+
+  .btn-gold:hover::before {
+    @apply transform translate-x-full;
+  }
+
+  .gold-underline {
+    @apply relative inline-block;
+  }
+
+  .gold-underline::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-[#D4AF37] 
+           transition-all duration-300 ease-in-out;
+  }
+
+  .gold-underline:hover::after {
+    @apply w-full;
+  }
+
+  .section-title {
+    @apply relative pb-3 mb-6;
+  }
+
+  .section-title::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-20 h-[2px] bg-[#D4AF37];
+  }
+
+  /* Luxury card styling */
+  .luxury-card {
+    @apply bg-white rounded-md border border-[#D4AF37]/20 shadow-md 
+           transition-all duration-300 overflow-hidden;
+  }
+
+  .luxury-card:hover {
+    @apply shadow-lg border-[#D4AF37]/40 transform -translate-y-1;
+  }
+
+  /* Form input styling */
+  .input-gold {
+    @apply border-[#D4AF37]/30 rounded-md py-3 px-4 focus:border-[#D4AF37] 
+           focus:ring-1 focus:ring-[#D4AF37] transition-all duration-300;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(270deg, #D4AF37, #FFFFFF, #D4AF37);
+  background-size: 1000% 100%;
+  animation: shimmer 8s ease-in-out infinite;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in-delay-1 {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.fade-in-delay-2 {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+.fade-in-delay-3 {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, #D4AF37);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: rotate 1.5s infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Style for parallax backgrounds */
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Gold gradient background */
+.gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #E9CE6D 100%);
+}
+
+/* Navy gradient background */
+.navy-gradient {
+  background: linear-gradient(135deg, #0A1D37 0%, #152A4A 100%);
 }
